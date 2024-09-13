@@ -8,7 +8,7 @@ import (
 // Основные константы, необходимые для расчетов.
 const (
 	lenStep   = 0.65  // средняя длина шага.
-	mInKm     = 1000  // количество метров в километре.
+	MInKm     = 1000  // количество метров в километре.
 	minInH    = 60    // количество минут в часе.
 	kmhInMsec = 0.278 // коэффициент для преобразования км/ч в м/с.
 	cmInM     = 100   // количество сантиметров в метре.
@@ -20,7 +20,7 @@ const (
 //
 // action int — количество совершенных действий (число шагов при ходьбе и беге, либо гребков при плавании).
 func distance(action int) float64 {
-	return float64(action) * lenStep / mInKm
+	return float64(action) * lenStep / MInKm
 }
 
 // meanSpeed возвращает значение средней скорости движения во время тренировки.
@@ -85,7 +85,7 @@ func RunningSpentCalories(action int, weight, duration float64) float64 {
 	if duration == 0 {
 		return 0
 	}
-	return (runningCaloriesMeanSpeedMultiplier * meanSpeed(action, duration) * runningCaloriesMeanSpeedShift) * weight / mInKM * duration * minInH
+	return (runningCaloriesMeanSpeedMultiplier * meanSpeed(action, duration) * runningCaloriesMeanSpeedShift) * weight / MInKm * duration * minInH
 }
 
 // Константы для расчета калорий, расходуемых при ходьбе.
@@ -126,7 +126,7 @@ func swimmingMeanSpeed(lengthPool, countPool int, duration float64) float64 {
 	if duration == 0 {
 		return 0
 	}
-	return float64(lengthPool) * float64(countPool) / mInKm / duration
+	return float64(lengthPool) * float64(countPool) / MInKm / duration
 }
 
 // SwimmingSpentCalories возвращает количество потраченных калорий при плавании.
